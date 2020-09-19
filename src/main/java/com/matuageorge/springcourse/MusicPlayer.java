@@ -1,12 +1,14 @@
 package com.matuageorge.springcourse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Component("musicPlayerBean")
+@Component
 public class MusicPlayer {
+    //    @Autowired
     private Music music;
     private String name;
     private int volume;
@@ -15,6 +17,7 @@ public class MusicPlayer {
     public MusicPlayer() {
     }
 
+        @Autowired
     public MusicPlayer(Music music) {
         this.music = music;
     }
@@ -23,11 +26,12 @@ public class MusicPlayer {
         this.musicList = musicList;
     }
 
-    public void playMusic() {
+    public String playMusic() {
 //        musicList.forEach(music -> System.out.println("Playing " + music.getSong()));
-        System.out.println(music.getSong());
+        return music.getSong();
     }
 
+    //    @Autowired
     public MusicPlayer setMusic(Music music) {
         this.music = music;
         return this;
