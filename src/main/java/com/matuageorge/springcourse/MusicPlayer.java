@@ -1,8 +1,11 @@
 package com.matuageorge.springcourse;
 
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Component("musicPlayerBean")
 public class MusicPlayer {
     private Music music;
     private String name;
@@ -22,9 +25,7 @@ public class MusicPlayer {
 
     public void playMusic() {
 //        musicList.forEach(music -> System.out.println("Playing " + music.getSong()));
-        for (Music music : musicList) {
-            System.out.println("Playing " + music.getSong());
-        }
+        System.out.println(music.getSong());
     }
 
     public MusicPlayer setMusic(Music music) {
