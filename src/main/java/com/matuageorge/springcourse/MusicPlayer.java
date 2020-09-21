@@ -1,6 +1,8 @@
 package com.matuageorge.springcourse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -8,17 +10,21 @@ import java.util.List;
 
 @Component
 public class MusicPlayer {
-    //    @Autowired
+//    @Autowired
+
     private Music music;
+    @Value("${musicPlayer.name}")
     private String name;
+
+    @Value("${musicPlayer.volume}")
     private int volume;
     private List<Music> musicList = new ArrayList<>();
 
     public MusicPlayer() {
     }
 
-        @Autowired
-    public MusicPlayer(Music music) {
+    @Autowired
+    public MusicPlayer(@Qualifier("jazz") Music music) {
         this.music = music;
     }
 
@@ -31,7 +37,8 @@ public class MusicPlayer {
         return music.getSong();
     }
 
-    //    @Autowired
+//    @Autowired
+
     public MusicPlayer setMusic(Music music) {
         this.music = music;
         return this;

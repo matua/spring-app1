@@ -2,7 +2,11 @@ package com.matuageorge.springcourse;
 
 import org.springframework.stereotype.Component;
 
-//@Component("classy")
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
+@Component("classy")
+//@Scope("prototype")
 public class ClassicalMusic implements Music {
     private ClassicalMusic() {
     }
@@ -14,5 +18,15 @@ public class ClassicalMusic implements Music {
     @Override
     public String getSong() {
         return "Hungarian Rapsody";
+    }
+
+    @PostConstruct
+    public void doMyinit() {
+        System.out.println("Init method");
+    }
+
+    @PreDestroy
+    public void doMyDestory() {
+        System.out.println("Destroy method");
     }
 }
