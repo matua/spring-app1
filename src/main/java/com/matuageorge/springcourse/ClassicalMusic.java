@@ -1,11 +1,9 @@
 package com.matuageorge.springcourse;
 
-import org.springframework.stereotype.Component;
-
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-@Component("classy")
+//@Component("classy")
 //@Scope("prototype")
 public class ClassicalMusic implements Music {
     private ClassicalMusic() {

@@ -1,8 +1,6 @@
 package com.matuageorge.springcourse;
 
-import org.springframework.stereotype.Component;
-
-@Component("jazz")
+//@Component("jazz")
 public class JazzMusic implements Music{
 
     @Override
