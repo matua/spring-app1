@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 //@Component
 public class MusicPlayer {
@@ -12,14 +13,24 @@ public class MusicPlayer {
 
     private Music music;
     @Value("${musicPlayer.name}")
+
     private String name;
 
     @Value("${musicPlayer.volume}")
     private int volume;
+
+
     private List<Music> musicList = new ArrayList<>();
+
+    {
+        musicList.add(ClassicalMusic.getClassicalMusic());
+        musicList.add(new TranceMusic());
+        musicList.add(new JazzMusic());
+    }
 
     public MusicPlayer() {
     }
+
 
     //    @Autowired
     public MusicPlayer(@Qualifier("jazz") Music music) {
@@ -32,7 +43,8 @@ public class MusicPlayer {
 
     public String playMusic() {
 //        musicList.forEach(music -> System.out.println("Playing " + music.getSong()));
-        return music.getSong();
+        Random random = new Random();
+        return musicList.get(random.nextInt(musicList.size())).getSong();
     }
 
 //    @Autowired
